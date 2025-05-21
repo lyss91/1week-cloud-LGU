@@ -1,0 +1,318 @@
+/* body에 폰트 추가 예시 - Google Fonts에서 임포트 후 적용 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap");
+
+body {
+  font-family: "Noto Sans KR", sans-serif; /* 더 깔끔하고 가독성 좋은 폰트 적용 */
+  line-height: 1.8; /* 줄 간격 살짝 늘려서 가독성 향상 */
+  background-color: #f0f4f8; /* 배경색을 아주 연한 푸른색 계열로 변경하여 부드러운 느낌 추가 */
+  color: #333;
+  padding: 20px;
+}
+.floating-nav-container {
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  height: fit-content;
+}
+
+header h1 {
+  font-size: 2.5em; /* 제목 글자 크기 키우기 */
+  margin-bottom: 10px; /* 제목 아래 여백 추가 */
+  font-weight: 700; /* 글씨를 더 두껍게 */
+}
+
+header p {
+  font-size: 1.1em; /* 부제목 글자 크기 키우기 */
+  font-weight: 300; /* 글씨를 살짝 얇게 */
+}
+/* nav 전체를 감싸는 한 줄 레이아웃 */
+.nav-row {
+  display: inline-flex; /* ✅ block → inline-flex로 크기 최소화 */
+  align-items: center;
+  gap: 20px;
+  border: 2px solid rgb(220, 223, 207); /* 너가 말한 빨간 박스 참고용 */
+  padding: 6px 10px; /* ✅ 상하/좌우 여백 축소 */
+  border-radius: 10px;
+  background-color: #f4f6f8;
+}
+
+/* 아이콘 스타일 */
+.nav-header img {
+  display: block;
+}
+
+/* nav-list를 가로로 정렬 */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+/* 메뉴 아이템 스타일 */
+.nav-list li a {
+  text-decoration: none;
+  color: rebeccapurple;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-list li a:hover {
+  background-color: #dcdcff;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  display: flex; /* 가로 정렬 */
+  gap: 10px; /* 항목 사이 간격 */
+  flex-wrap: wrap; /* 줄바꿈 허용 (반응형 대응) */
+}
+
+.nav-list li a {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.nav-list li a:hover {
+  background-color: #0077cc;
+}
+
+.nav-header a img {
+  transition: transform 0.2s;
+}
+
+.nav-header a:hover img {
+  transform: scale(1.2);
+}
+
+/* 자기소개 텍스트 애니메이션 */
+.intro-text-wrapper {
+  position: relative;
+  height: 2.2em;
+  overflow: hidden;
+}
+
+.slide-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  animation-name: fadeSlide;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  text-align: left;
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  animation-fill-mode: both; /* ✅ 잔상 방지 핵심 */
+}
+/* animation-fill-mode: both 없으면 잔상 남음
+top: 0 안 맞으면 겹침 발생
+animation-delay 정확하게 나누지 않으면 충돌 */
+
+/* 각 문장에 정확한 애니메이션 딜레이 */
+.slide-text:nth-child(1) {
+  animation-delay: 0s;
+  /* 정확하게 나누지 않으면 충돌 */
+}
+.slide-text:nth-child(2) {
+  animation-delay: 4s;
+}
+.slide-text:nth-child(3) {
+  animation-delay: 8s;
+}
+
+/* 애니메이션 키프레임 */
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+  8% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  30% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 섹션 스타일 */
+section {
+  margin-top: 25px; /* 섹션 간 간격 조금 더 넓게 */
+  background: white;
+  border-radius: 12px; /* 모서리를 더 둥글게 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 그림자를 더 부드럽고 넓게 */
+  padding: 30px; /* 내부 여백도 좀 더 넓게 */
+  scroll-margin-top: 100px; /* 탐색 메뉴 높이에 맞게 조절 */
+}
+
+/* 첫 번째 섹션 (자기소개)에만 배경색 다르게 주기 예시 */
+section:first-of-type {
+  background-color: #ffffff; /* 흰색 유지 */
+}
+
+/* 기술 스택과 프로젝트 각 항목 스타일 */
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.skills div,
+.projects div {
+  background-color: #fdfdff; /* 각 항목 배경색을 아주 연한 색으로 */
+  padding: 15px 20px; /* 내부 여백 추가 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 작은 그림자 추가 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  transition: transform 0.2s ease-in-out; /* 마우스 오버 시 애니메이션 */
+}
+
+.skills div:hover,
+.projects div:hover {
+  transform: translateY(-5px); /* 마우스 오버 시 살짝 위로 올라오게 */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* 그림자 진하게 */
+}
+
+.skills img,
+.projects img {
+  margin-right: 8px; /* 아이콘과 텍스트 사이 간격 늘리기 */
+  width: 25px; /* 아이콘 크기 살짝 키우기 */
+}
+
+/* 프로젝트의 텍스트 스타일 */
+.projects div strong {
+  display: block; /* 제목을 블록 요소로 만들어 줄 바꿈 */
+  margin-bottom: 5px; /* 제목 아래 여백 */
+  font-size: 1.1em;
+  color: #005680; /* 강조 색상 */
+}
+
+.contact-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; /* 작은 화면 대응 */
+}
+
+.contact-header-row h2 {
+  margin: 0;
+  font-size: 1.3em;
+}
+
+.contact-icons a img {
+  margin-left: 10px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.contact-icons a:hover img {
+  transform: scale(1.2);
+}
+
+@media (max-width: 500px) {
+  .contact-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-icons {
+    margin-top: 10px;
+  }
+}
+
+/* 태블릿 화면 (768px 이하) */
+@media (max-width: 768px) {
+  header {
+    padding: 30px 15px; /* 헤더 여백 줄이기 */
+  }
+
+  section {
+    padding: 20px; /* 섹션 여백 줄이기 */
+  }
+
+  .skills,
+  .projects {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(150px, 1fr)
+    ); /* 태블릿에서 2열 유지 */
+    gap: 10px;
+  }
+
+  .skills div,
+  .projects div {
+    padding: 12px 15px; /* 아이템 내부 여백 줄이기 */
+  }
+}
+
+/* 모바일 화면 (600px 이하) - 기존 코드 유지 */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8em; /* 모바일에서 제목 크기 조절 */
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  .skills,
+  .projects {
+    grid-template-columns: 1fr; /* 모바일에선 한 줄씩 */
+  }
+
+  img {
+    width: 20px; /* 작은 화면에서 아이콘 크기 유지 또는 살짝 줄이기 */
+  }
+}
+
+section h2 img {
+  margin-right: 8px; /* 제목 옆 아이콘과 텍스트 간격 조정 */
+}
+
+p a img {
+  /* 연락처 아이콘 */
+  transition: transform 0.2s ease-in-out; /* 마우스 오버 시 애니메이션 */
+  filter: grayscale(0.2); /* 살짝 흑백 처리하여 깔끔하게 */
+}
+
+p a:hover img {
+  transform: scale(1.1); /* 마우스 오버 시 아이콘 살짝 확대 */
+  filter: grayscale(0); /* 컬러로 돌아오게 */
+}
+
+@media (max-width: 600px) {
+  .nav-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+  }
+}
